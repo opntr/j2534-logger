@@ -28,6 +28,8 @@
 #include "shim_loader.h"
 #include "shim_output.h"
 
+#define ALLOW_POPUP
+
 // Pointers to J2534 API functions in the loaded library
 PTOPEN _PassThruOpen = 0;
 PTCLOSE _PassThruClose = 0;
