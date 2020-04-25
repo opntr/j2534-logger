@@ -2,11 +2,12 @@
 Release
 Debug
 
-#ignore user settings
+# user settings
 *.vcxproj.user
 
-# ignore precompiled headers
+# precompiled headers
 *.cpp.tu
 
-# ignore VS local cache
+# VS local cache
 .vs
+*.aps
