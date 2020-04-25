@@ -25,39 +25,39 @@
 /* ProtocolID definitions */
 /**************************/
 
-#define J1850VPW					1
-#define J1850PWM					2
-#define ISO9141						3
-#define ISO14230					4
-#define CAN							5
-#define ISO15765					6
+#define J1850VPW				1
+#define J1850PWM				2
+#define ISO9141					3
+#define ISO14230				4
+#define CAN					5
+#define ISO15765				6
 #define SCI_A_ENGINE				7
-#define SCI_A_TRANS					8
+#define SCI_A_TRANS				8
 #define SCI_B_ENGINE				9
-#define SCI_B_TRANS					10
+#define SCI_B_TRANS				10
 
 // J2534-2 Pin Switched ProtocolIDs
 
-#define J1850VPW_PS					0x8000
-#define J1850PWM_PS					0x8001
-#define ISO9141_PS					0x8002
-#define ISO14230_PS					0x8003
-#define CAN_PS						0x8004
-#define ISO15765_PS					0x8005
-#define J2610_PS					0x8006
+#define J1850VPW_PS				0x8000
+#define J1850PWM_PS				0x8001
+#define ISO9141_PS				0x8002
+#define ISO14230_PS				0x8003
+#define CAN_PS					0x8004
+#define ISO15765_PS				0x8005
+#define J2610_PS				0x8006
 #define SW_ISO15765_PS				0x8007
-#define SW_CAN_PS					0x8008
-#define GM_UART_PS					0x8009
+#define SW_CAN_PS				0x8008
+#define GM_UART_PS				0x8009
 #define CAN_XON_XOFF_PS				0x800A
-#define ANALOG_IN_1					0x800B
-#define ANALOG_IN_2					0x800C
-#define ANALOG_IN_3					0x800D
-#define ANALOG_IN_4					0x800E
-#define ANALOG_IN_5					0x800F
-#define ANALOG_IN_6					0x8010
-#define ANALOG_IN_7					0x8011
-#define ANALOG_IN_8					0x8012
-#define ANALOG_IN_9					0x8013
+#define ANALOG_IN_1				0x800B
+#define ANALOG_IN_2				0x800C
+#define ANALOG_IN_3				0x800D
+#define ANALOG_IN_4				0x800E
+#define ANALOG_IN_5				0x800F
+#define ANALOG_IN_6				0x8010
+#define ANALOG_IN_7				0x8011
+#define ANALOG_IN_8				0x8012
+#define ANALOG_IN_9				0x8013
 #define ANALOG_IN_10				0x8014
 #define ANALOG_IN_11				0x8015
 #define ANALOG_IN_12				0x8016
@@ -86,78 +86,78 @@
 /* IOCTL IDs */
 /*************/
 
-#define GET_CONFIG						0x01
-#define SET_CONFIG						0x02
-#define READ_VBATT						0x03
-#define FIVE_BAUD_INIT					0x04
-#define FAST_INIT						0x05
-// unused								0x06
-#define CLEAR_TX_BUFFER					0x07
-#define CLEAR_RX_BUFFER					0x08
-#define CLEAR_PERIODIC_MSGS				0x09
-#define CLEAR_MSG_FILTERS				0x0A
-#define CLEAR_FUNCT_MSG_LOOKUP_TABLE			0x0B
-#define ADD_TO_FUNCT_MSG_LOOKUP_TABLE			0x0C
-#define DELETE_FROM_FUNCT_MSG_LOOKUP_TABLE		0x0D
-#define READ_PROG_VOLTAGE				0x0E
+#define GET_CONFIG				0x01
+#define SET_CONFIG				0x02
+#define READ_VBATT				0x03
+#define FIVE_BAUD_INIT				0x04
+#define FAST_INIT				0x05
+// unused					0x06
+#define CLEAR_TX_BUFFER				0x07
+#define CLEAR_RX_BUFFER				0x08
+#define CLEAR_PERIODIC_MSGS			0x09
+#define CLEAR_MSG_FILTERS			0x0A
+#define CLEAR_FUNCT_MSG_LOOKUP_TABLE		0x0B
+#define ADD_TO_FUNCT_MSG_LOOKUP_TABLE		0x0C
+#define DELETE_FROM_FUNCT_MSG_LOOKUP_TABLE	0x0D
+#define READ_PROG_VOLTAGE			0x0E
 // J2534-2 SW_CAN
-#define SW_CAN_HS						0x8000		/*-2*/
-#define SW_CAN_NS						0x8001		/*-2*/
-#define SET_POLL_RESPONSE				0x8002		/*-2*/
-#define BECOME_MASTER					0x8003		/*-2*/
+#define SW_CAN_HS				0x8000		/*-2*/
+#define SW_CAN_NS				0x8001		/*-2*/
+#define SET_POLL_RESPONSE			0x8002		/*-2*/
+#define BECOME_MASTER				0x8003		/*-2*/
 
 /*******************************/
 /* Configuration Parameter IDs */
 /*******************************/
 
-#define DATA_RATE					0x01
-// unused							0x02
-#define LOOPBACK					0x03
+#define DATA_RATE				0x01
+// unused					0x02
+#define LOOPBACK				0x03
 #define NODE_ADDRESS				0x04
 #define NETWORK_LINE				0x05
-#define P1_MIN						0x06	// Don't use
-#define P1_MAX						0x07
-#define P2_MIN						0x08	// Don't use
-#define P2_MAX						0x09	// Don't use
-#define P3_MIN						0x0A
-#define P3_MAX						0x0B	// Don't use
-#define P4_MIN						0x0C
-#define P4_MAX						0x0D	// Don't use
-// See W0 = 0x19
-#define W1							0x0E
-#define W2							0x0F
-#define W3							0x10
-#define W4							0x11
-#define W5							0x12
-#define TIDLE						0x13
-#define TINIL						0x14
-#define TWUP						0x15
-#define PARITY						0x16
+#define P1_MIN					0x06	// Don't use
+#define P1_MAX					0x07
+#define P2_MIN					0x08	// Don't use
+#define P2_MAX					0x09	// Don't use
+#define P3_MIN					0x0A
+#define P3_MAX					0x0B	// Don't use
+#define P4_MIN					0x0C
+#define P4_MAX					0x0D	// Don't use
+// See W0					0x19
+#define W1					0x0E
+#define W2					0x0F
+#define W3					0x10
+#define W4					0x11
+#define W5					0x12
+#define TIDLE					0x13
+#define TINIL					0x14
+#define TWUP					0x15
+#define PARITY					0x16
 #define BIT_SAMPLE_POINT			0x17
 #define SYNC_JUMP_WIDTH				0x18
-#define W0							0x19
-#define T1_MAX						0x1A
-#define T2_MAX						0x1B
-// See T3_MAX						0x24
-#define T4_MAX						0x1C
-#define T5_MAX						0x1D
-#define ISO15765_BS					0x1E
+#define W0					0x19
+#define T1_MAX					0x1A
+#define T2_MAX					0x1B
+// See T3_MAX					0x24
+#define T4_MAX					0x1C
+#define T5_MAX					0x1D
+#define ISO15765_BS				0x1E
 #define ISO15765_STMIN				0x1F
-#define DATA_BITS					0x20
+#define DATA_BITS				0x20
 #define FIVE_BAUD_MOD				0x21
-#define BS_TX						0x22
-#define STMIN_TX					0x23
-#define T3_MAX						0x24
+#define BS_TX					0x22
+#define STMIN_TX				0x23
+#define T3_MAX					0x24
 #define ISO15765_WFT_MAX			0x25
 
 // J2534-2
 #define CAN_MIXED_FORMAT			0x8000	/*-2*/
-#define J1962_PINS					0x8001	/*-2*/
+#define J1962_PINS				0x8001	/*-2*/
 #define SW_CAN_HS_DATA_RATE			0x8010	/*-2*/
-#define SW_CAN_SPEEDCHANGE_ENABLE	0x8011	/*-2*/
+#define SW_CAN_SPEEDCHANGE_ENABLE		0x8011	/*-2*/
 #define SW_CAN_RES_SWITCH			0x8012	/*-2*/
 #define ACTIVE_CHANNELS				0x8020	// Bitmask of channels being sampled
-#define SAMPLE_RATE					0x8021	// Samples/second or Seconds/sample
+#define SAMPLE_RATE				0x8021	// Samples/second or Seconds/sample
 #define SAMPLES_PER_READING			0x8022	// Samples to average into a single reading
 #define READINGS_PER_MSG			0x8023	// Number of readings for each active channel per PASSTHRU_MSG structure
 #define AVERAGING_METHOD			0x8024	// The way in which the samples will be averaged.
@@ -177,39 +177,39 @@
 #define ERR_NOT_SUPPORTED			0x01
 
 // Invalid ChannelID value
-#define ERR_INVALID_CHANNEL_ID		0x02
+#define ERR_INVALID_CHANNEL_ID			0x02
 
 // Invalid ProtocolID value, unsupported ProtocolID, or there is a resource conflict (i.e. trying to connect to
 // multiple protocols that are mutually exclusive such as J1850PWM and J1850VPW, or CAN and SCI A, etc.)
-#define ERR_INVALID_PROTOCOL_ID		0x03
+#define ERR_INVALID_PROTOCOL_ID			0x03
 
 // NULL pointer supplied where a valid pointer is required
 #define ERR_NULL_PARAMETER			0x04
 
 // Invalid value for Ioctl parameter
-#define ERR_INVALID_IOCTL_VALUE		0x05
+#define ERR_INVALID_IOCTL_VALUE			0x05
 
 // Invalid flag values
 #define ERR_INVALID_FLAGS			0x06
 
 // Undefined error, use PassThruGetLastError for text description
-#define ERR_FAILED					0x07
+#define ERR_FAILED				0x07
 
 // Device ID invalid
-#define ERR_DEVICE_NOT_CONNECTED	0x08
+#define ERR_DEVICE_NOT_CONNECTED		0x08
 
 // Timeout.
 // PassThruReadMsg: No message available to read or could not read the specified number of
 //   messages. The actual number of messages read is placed in <NumMsgs>
 // PassThruWriteMsg: Device could not write the specified number of messages. The actual number of
 //   messages sent on the vehicle network is placed in <NumMsgs>.
-#define ERR_TIMEOUT					0x09
+#define ERR_TIMEOUT				0x09
 
 // Invalid message structure pointed to by pMsg (Reference Section 8 – Message Structure)
 #define ERR_INVALID_MSG				0x0A
 
 // Invalid TimeInterval value
-#define ERR_INVALID_TIME_INTERVAL	0x0B
+#define ERR_INVALID_TIME_INTERVAL		0x0B
 
 // Exceeded maximum number of message IDs or allocated space
 #define ERR_EXCEEDED_LIMIT			0x0C
@@ -221,7 +221,7 @@
 #define ERR_DEVICE_IN_USE			0x0E
 
 // Invalid IoctlID value
-#define ERR_INVALID_IOCTL_ID		0x0F
+#define ERR_INVALID_IOCTL_ID			0x0F
 
 // Protocol message buffer empty, no messages available to read
 #define ERR_BUFFER_EMPTY			0x10
@@ -242,7 +242,7 @@
 #define ERR_MSG_PROTOCOL_ID			0x15
 
 // Invalid Filter ID value
-#define ERR_INVALID_FILTER_ID		0x16
+#define ERR_INVALID_FILTER_ID			0x16
 
 // No flow control filter set or matched (for protocolID ISO15765 only)
 #define ERR_NO_FLOW_CONTROL			0x17
@@ -251,10 +251,10 @@
 #define ERR_NOT_UNIQUE				0x18
 
 // The desired baud rate cannot be achieved within the tolerance specified in Section 6.5
-#define ERR_INVALID_BAUDRATE		0x19
+#define ERR_INVALID_BAUDRATE			0x19
 
 // Unable to communicate with device
-#define ERR_INVALID_DEVICE_ID		0x1A
+#define ERR_INVALID_DEVICE_ID			0x1A
 
 #define ERR_NULLPARAMETER			ERR_NULL_PARAMETER	/*v2*/
 
@@ -263,11 +263,11 @@
 /* Miscellaneous definitions */
 /*****************************/
 #define SHORT_TO_GROUND				0xFFFFFFFE
-#define VOLTAGE_OFF					0xFFFFFFFF
+#define VOLTAGE_OFF				0xFFFFFFFF
 
-#define NO_PARITY					0
-#define ODD_PARITY					1
-#define EVEN_PARITY					2
+#define NO_PARITY				0
+#define ODD_PARITY				1
+#define EVEN_PARITY				2
 
 //SWCAN
 #define DISBLE_SPDCHANGE			0	/*-2*/
@@ -278,7 +278,7 @@
 
 //Mixed Mode
 #define CAN_MIXED_FORMAT_OFF			0	/*-2*/
-#define CAN_MIXED_FORMAT_ON				1	/*-2*/
+#define CAN_MIXED_FORMAT_ON			1	/*-2*/
 #define CAN_MIXED_FORMAT_ALL_FRAMES		2	/*-2*/
 
 
@@ -288,22 +288,22 @@
 
 // 0 = Receive standard CAN ID (11 bit)
 // 1 = Receive extended CAN ID (29 bit)
-#define CAN_29BIT_ID					0x00000100
+#define CAN_29BIT_ID				0x00000100
 
 // 0 = The interface will generate and append the checksum as defined in ISO 9141-2 and ISO 14230-2 for
 // transmitted messages, and verify the checksum for received messages.
 // 1 = The interface will not generate and verify the checksum-the entire message will be treated as
 // data by the interface
-#define ISO9141_NO_CHECKSUM				0x00000200
+#define ISO9141_NO_CHECKSUM			0x00000200
 
 // 0 = either standard or extended CAN ID types used – CAN ID type defined by bit 8
 // 1 = both standard and extended CAN ID types used – if the CAN controller allows prioritizing either standard
 // (11 bit) or extended (29 bit) CAN ID's then bit 8 will determine the higher priority ID type
-#define CAN_ID_BOTH						0x00000800
+#define CAN_ID_BOTH				0x00000800
 
 // 0 = use L-line and K-line for initialization address
 // 1 = use K-line only line for initialization address
-#define ISO9141_K_LINE_ONLY				0x00001000
+#define ISO9141_K_LINE_ONLY			0x00001000
 
 /************************/
 /* RxStatus definitions */
@@ -311,23 +311,23 @@
 
 // 0 = received i.e. this message was transmitted on the bus by another node
 // 1 = transmitted i.e. this is the echo of the message transmitted by the PassThru device
-#define TX_MSG_TYPE						0x00000001
+#define TX_MSG_TYPE				0x00000001
 
 // 0 = Not a start of message indication
 // 1 = First byte or frame received
-#define START_OF_MESSAGE				0x00000002
+#define START_OF_MESSAGE			0x00000002
 #define ISO15765_FIRST_FRAME			0x00000002	/*v2 compat from v0202*/
 
-#define ISO15765_EXT_ADDR				0x00000080	/*DT Accidentally refered to in spec*/
+#define ISO15765_EXT_ADDR			0x00000080	/*DT Accidentally refered to in spec*/
 
 // 0 = No break received
 // 1 = Break received
-#define RX_BREAK						0x00000004
+#define RX_BREAK				0x00000004
 
 // 0 = No TxDone
 // 1 = TxDone
-#define TX_INDICATION					0x00000008	// Preferred name
-#define TX_DONE							0x00000008
+#define TX_INDICATION				0x00000008	// Preferred name
+#define TX_DONE					0x00000008
 
 // 0 = No Error
 // 1 = Padding Error
@@ -335,13 +335,13 @@
 
 // 0 = no extended address,
 // 1 = extended address is first byte after the CAN ID
-#define ISO15765_ADDR_TYPE				0x00000080
+#define ISO15765_ADDR_TYPE			0x00000080
 
 //CAN_29BIT_ID							0x00000100  defined above
 
-#define	SW_CAN_NS_RX					0x00040000	/*-2*/
-#define	SW_CAN_HS_RX					0x00020000	/*-2*/
-#define	SW_CAN_HV_RX					0x00010000	/*-2*/
+#define	SW_CAN_NS_RX				0x00040000	/*-2*/
+#define	SW_CAN_HS_RX				0x00020000	/*-2*/
+#define	SW_CAN_HV_RX				0x00010000	/*-2*/
 
 /***********************/
 /* TxFlags definitions */
@@ -349,27 +349,27 @@
 
 // 0 = no padding
 // 1 = pad all flow controlled messages to a full CAN frame using zeroes
-#define ISO15765_FRAME_PAD				0x00000040
+#define ISO15765_FRAME_PAD			0x00000040
 
-//ISO15765_ADDR_TYPE					0x00000080  defined above
-//CAN_29BIT_ID							0x00000100  defined above
+//ISO15765_ADDR_TYPE				0x00000080  defined above
+//CAN_29BIT_ID					0x00000100  defined above
 
 // 0 = Interface message timing as specified in ISO 14230
 // 1 = After a response is received for a physical request, the wait time shall be reduced to P3_MIN
 // Does not affect timing on responses to functional requests
-#define WAIT_P3_MIN_ONLY				0x00000200
+#define WAIT_P3_MIN_ONLY			0x00000200
 
-#define SW_CAN_HV_TX					0x00000400	/*-2*/
+#define SW_CAN_HV_TX				0x00000400	/*-2*/
 
 // 0 = Transmit using SCI Full duplex mode
 // 1 = Transmit using SCI Half duplex mode
-#define SCI_MODE						0x00400000
+#define SCI_MODE				0x00400000
 
 // 0 = no voltage after message transmit
 // 1 = apply 20V after message transmit
-#define SCI_TX_VOLTAGE					0x00800000
+#define SCI_TX_VOLTAGE				0x00800000
 
-#define DT_PERIODIC_UPDATE				0x10000000	/*DT*/
+#define DT_PERIODIC_UPDATE			0x10000000	/*DT*/
 
 
 /**********************/
@@ -377,14 +377,14 @@
 /**********************/
 
 // Allows matching messages into the receive queue. This filter type is only valid on non-ISO 15765 channels
-#define PASS_FILTER						0x00000001
+#define PASS_FILTER				0x00000001
 
 // Keeps matching messages out of the receive queue. This filter type is only valid on non-ISO 15765 channels
-#define BLOCK_FILTER					0x00000002
+#define BLOCK_FILTER				0x00000002
 
 // Allows matching messages into the receive queue and defines an outgoing flow control message to support
 // the ISO 15765-2 flow control mechanism. This filter type is only valid on ISO 15765 channels.
-#define FLOW_CONTROL_FILTER				0x00000003
+#define FLOW_CONTROL_FILTER			0x00000003
 
 #pragma pack(push,1)
 typedef struct _PASSTHRU_MSG
@@ -425,7 +425,7 @@ typedef struct _PASSTHRU_MSG
 } PASSTHRU_MSG;
 
 typedef struct _SCONFIG
-{	
+{
 	unsigned long Parameter;		// Name of parameter
 	unsigned long Value;			// Value of the parameter
 } SCONFIG;
@@ -433,7 +433,7 @@ typedef struct _SCONFIG
 typedef struct _SCONFIG_LIST
 {
 	unsigned long NumOfParams;		// Number of SCONFIG elements
-	SCONFIG *ConfigPtr;				// Array of SCONFIG
+	SCONFIG *ConfigPtr;			// Array of SCONFIG
 } SCONFIG_LIST;
 
 typedef struct _SBYTE_ARRAY
