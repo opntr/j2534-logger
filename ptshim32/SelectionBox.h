@@ -9,28 +9,27 @@
 
 // SelectionBox dialog
 
-class CSelectionBox : public CDialog
-{
+class CSelectionBox : public CDialog {
 	DECLARE_DYNAMIC(CSelectionBox)
 
-public:
-	CSelectionBox(std::set<cPassThruInfo>& connectedList, CWnd* pParent = NULL);   // standard constructor
+    public:
+	CSelectionBox(std::set<cPassThruInfo> &connectedList, CWnd *pParent = NULL); // standard constructor
 	virtual ~CSelectionBox();
 
-// Dialog Data
+	// Dialog Data
 	enum { IDD = IDD_DIALOG1 };
 
-protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+    protected:
+	virtual void DoDataExchange(CDataExchange *pDX); // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
 
-private:
+    private:
 	// Reference to the connectedList. The caller has already scanned for devices and
 	// determined that it is worth popping-up a dialog box to select from these
-	std::set<cPassThruInfo>& connectedList;
+	std::set<cPassThruInfo> &connectedList;
 
-	cPassThruInfo * sel;
+	cPassThruInfo *sel;
 	CString cstrDebugFile;
 
 	CListCtrl m_listview;
@@ -41,8 +40,7 @@ private:
 
 	void DoPopulateRegistryListbox();
 
-public:
-
+    public:
 	virtual BOOL OnInitDialog();
 	void OnBnClickedOk();
 	afx_msg void OnLvnItemchangedList1(NMHDR *pNMHDR, LRESULT *pResult);
@@ -50,6 +48,6 @@ public:
 	afx_msg void OnBnClickedConfig();
 	afx_msg void OnBnClickedBrowse();
 
-	cPassThruInfo * GetSelectedPassThru();
+	cPassThruInfo *GetSelectedPassThru();
 	CString GetDebugFilename();
 };

@@ -18,7 +18,6 @@
 **
 */
 
-
 #pragma once
 
 #include "j2534_v0404.h"
@@ -31,16 +30,15 @@ typedef std::wstring tstring;
 typedef std::string tstring;
 #endif
 
-class cPassThruInfo
-{
-public:
+class cPassThruInfo {
+    public:
 	cPassThruInfo(tstring Vendor, tstring Name, tstring FunctionLibrary, tstring ConfigApplication)
-		: Vendor(Vendor), Name(Name), FunctionLibrary(FunctionLibrary), ConfigApplication(ConfigApplication) {};
+	    : Vendor(Vendor)
+	    , Name(Name)
+	    , FunctionLibrary(FunctionLibrary)
+	    , ConfigApplication(ConfigApplication) {};
 
-	bool operator<(const cPassThruInfo &rhs) const
-	{
-		return Name < rhs.Name;
-	}
+	bool operator<(const cPassThruInfo &rhs) const { return Name < rhs.Name; }
 
 	tstring Vendor;
 	tstring Name;
@@ -49,11 +47,10 @@ public:
 	// Should also record the supported protocols
 };
 
-class auto_lock
-{
-public:
-    auto_lock();
-    ~auto_lock();
+class auto_lock {
+    public:
+	auto_lock();
+	~auto_lock();
 };
 
 double GetTimeSinceInit();

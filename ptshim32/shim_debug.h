@@ -18,7 +18,6 @@
 **
 */
 
-
 #pragma once
 
 #include "j2534_v0404.h"
@@ -43,5 +42,5 @@ void dbug_printtxflags(unsigned long TxFlags);
 void dbug_printretval(unsigned long RetVal);
 void dbug_printsbyte(SBYTE_ARRAY *inAry, LPCTSTR s);
 void dbug_printsconfig(SCONFIG_LIST *pList);
-void dbug_printmsg(PASSTHRU_MSG mm[], LPCTSTR s, unsigned long * numMsgs, bool isWrite);
+void dbug_printmsg(PASSTHRU_MSG mm[], LPCTSTR s, unsigned long *numMsgs, bool isWrite);
 void dbug_printmsg(PASSTHRU_MSG mm[], LPCTSTR s, unsigned long numMsgs, bool isWrite);

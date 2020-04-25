@@ -18,7 +18,6 @@
 **
 */
 
-
 #include <tchar.h>
 
 void shim_writeLogfile(LPCTSTR szFilename, bool fUseFileForever);

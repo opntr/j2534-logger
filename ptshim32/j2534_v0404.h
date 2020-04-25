@@ -444,22 +444,23 @@ typedef struct _SBYTE_ARRAY
 #pragma pack(pop)
 
 #ifdef _WIN32
-	#define J2534_API __stdcall
+#define J2534_API __stdcall
 #else
-	#define J2534_API
+#define J2534_API
 #endif
 
-typedef long (J2534_API* PTOPEN)(void *pName, unsigned long *pDeviceID);
-typedef long (J2534_API* PTCLOSE)(unsigned long DeviceID);
-typedef long (J2534_API* PTCONNECT)(unsigned long DeviceID, unsigned long ProtocolID, unsigned long Flags, unsigned long BaudRate, unsigned long *pChannelID);
-typedef long (J2534_API* PTDISCONNECT)(unsigned long ChannelID);
-typedef long (J2534_API* PTREADMSGS)(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pNumMsgs, unsigned long Timeout);
-typedef long (J2534_API* PTWRITEMSGS)(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pNumMsgs, unsigned long Timeout);
-typedef long (J2534_API* PTSTARTPERIODICMSG)(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pMsgID, unsigned long TimeInterval);
-typedef long (J2534_API* PTSTOPPERIODICMSG)(unsigned long ChannelID, unsigned long MsgID);
-typedef long (J2534_API* PTSTARTMSGFILTER)(unsigned long ChannelID, unsigned long FilterType, PASSTHRU_MSG *pMaskMsg, PASSTHRU_MSG *pPatternMsg, PASSTHRU_MSG *pFlowControlMsg, unsigned long *pFilterID);
-typedef long (J2534_API* PTSTOPMSGFILTER)(unsigned long ChannelID, unsigned long FilterID);
-typedef long (J2534_API* PTSETPROGRAMMINGVOLTAGE)(unsigned long DeviceID, unsigned long PinNumber, unsigned long Voltage);
-typedef long (J2534_API* PTREADVERSION)(unsigned long DeviceID, char *pFirmwareVersion, char *pDllVersion, char *pApiVersion);
-typedef long (J2534_API* PTGETLASTERROR)(char *pErrorDescription);
-typedef long (J2534_API* PTIOCTL)(unsigned long ChannelID, unsigned long IoctlID, void *pInput, void *pOutput);
+typedef long(J2534_API *PTOPEN)(void *pName, unsigned long *pDeviceID);
+typedef long(J2534_API *PTCLOSE)(unsigned long DeviceID);
+typedef long(J2534_API *PTCONNECT)(unsigned long DeviceID, unsigned long ProtocolID, unsigned long Flags, unsigned long BaudRate, unsigned long *pChannelID);
+typedef long(J2534_API *PTDISCONNECT)(unsigned long ChannelID);
+typedef long(J2534_API *PTREADMSGS)(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pNumMsgs, unsigned long Timeout);
+typedef long(J2534_API *PTWRITEMSGS)(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pNumMsgs, unsigned long Timeout);
+typedef long(J2534_API *PTSTARTPERIODICMSG)(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pMsgID, unsigned long TimeInterval);
+typedef long(J2534_API *PTSTOPPERIODICMSG)(unsigned long ChannelID, unsigned long MsgID);
+typedef long(J2534_API *PTSTARTMSGFILTER)(unsigned long ChannelID, unsigned long FilterType, PASSTHRU_MSG *pMaskMsg, PASSTHRU_MSG *pPatternMsg,
+    PASSTHRU_MSG *pFlowControlMsg, unsigned long *pFilterID);
+typedef long(J2534_API *PTSTOPMSGFILTER)(unsigned long ChannelID, unsigned long FilterID);
+typedef long(J2534_API *PTSETPROGRAMMINGVOLTAGE)(unsigned long DeviceID, unsigned long PinNumber, unsigned long Voltage);
+typedef long(J2534_API *PTREADVERSION)(unsigned long DeviceID, char *pFirmwareVersion, char *pDllVersion, char *pApiVersion);
+typedef long(J2534_API *PTGETLASTERROR)(char *pErrorDescription);
+typedef long(J2534_API *PTIOCTL)(unsigned long ChannelID, unsigned long IoctlID, void *pInput, void *pOutput);
