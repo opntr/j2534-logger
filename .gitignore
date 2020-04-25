@@ -1,0 +1,12 @@
+# ignore standard VS build targets
+Release
+Debug
+
+#ignore user settings
+*.vcxproj.user
+
+# ignore precompiled headers
+*.cpp.tu
+
+# ignore VS local cache
+.vs
