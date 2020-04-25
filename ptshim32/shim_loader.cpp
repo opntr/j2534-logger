@@ -31,20 +31,20 @@
 #define ALLOW_POPUP
 
 // Pointers to J2534 API functions in the loaded library
-PTOPEN _PassThruOpen = 0;
-PTCLOSE _PassThruClose = 0;
-PTCONNECT _PassThruConnect = 0;
-PTDISCONNECT _PassThruDisconnect = 0;
-PTREADMSGS _PassThruReadMsgs = 0;
-PTWRITEMSGS _PassThruWriteMsgs = 0;
-PTSTARTPERIODICMSG _PassThruStartPeriodicMsg = 0;
-PTSTOPPERIODICMSG _PassThruStopPeriodicMsg = 0;
-PTSTARTMSGFILTER _PassThruStartMsgFilter = 0;
-PTSTOPMSGFILTER _PassThruStopMsgFilter = 0;
-PTSETPROGRAMMINGVOLTAGE _PassThruSetProgrammingVoltage = 0;
-PTREADVERSION _PassThruReadVersion = 0;
-PTGETLASTERROR _PassThruGetLastError = 0;
-PTIOCTL _PassThruIoctl = 0;
+PTOPEN _PassThruOpen = NULL;
+PTCLOSE _PassThruClose = NULL;
+PTCONNECT _PassThruConnect = NULL;
+PTDISCONNECT _PassThruDisconnect = NULL;
+PTREADMSGS _PassThruReadMsgs = NULL;
+PTWRITEMSGS _PassThruWriteMsgs = NULL;
+PTSTARTPERIODICMSG _PassThruStartPeriodicMsg = NULL;
+PTSTOPPERIODICMSG _PassThruStopPeriodicMsg = NULL;
+PTSTARTMSGFILTER _PassThruStartMsgFilter = NULL;
+PTSTOPMSGFILTER _PassThruStopMsgFilter = NULL;
+PTSETPROGRAMMINGVOLTAGE _PassThruSetProgrammingVoltage = NULL;
+PTREADVERSION _PassThruReadVersion = NULL;
+PTGETLASTERROR _PassThruGetLastError = NULL;
+PTIOCTL _PassThruIoctl = NULL;
 
 static HINSTANCE hDLL = NULL;
 
