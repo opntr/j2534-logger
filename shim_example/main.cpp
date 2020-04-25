@@ -22,7 +22,8 @@
 #include <shim_frontend.h>
 #include <tchar.h>
 
-int main(int argc, char * argv[])
+int
+main(int argc, char *argv[])
 {
 	unsigned long ptStatus;
 	unsigned long DeviceID;
@@ -34,7 +35,7 @@ int main(int argc, char * argv[])
 
 	// Load a J2534 library. It's assumed that the caller will parse the registry,
 	// choose one of the installed devices, and pass the appropriate FunctionLibrary
-	// string. This example is hardcoded for the CarDAQ+ to keep things simple. 
+	// string. This example is hardcoded for the CarDAQ+ to keep things simple.
 	ptStatus = PassThruLoadLibrary("c:\\windows\\system32\\cdpls432.dll");
 
 	ptStatus = PassThruOpen(NULL, &DeviceID);

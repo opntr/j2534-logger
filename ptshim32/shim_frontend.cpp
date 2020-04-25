@@ -18,48 +18,45 @@
 **
 */
 
-
 #include <stdafx.h>
 
 #include <tchar.h>
-#include <windows.h> 
+#include <windows.h>
 
 #include "j2534_v0404.h"
 #include "shim_debug.h"
 #include "shim_loader.h"
 #include "shim_output.h"
 
-#define SHIM_CHECK_DLL() \
-{ \
-	if (! shim_checkAndAutoload()) \
-	{ \
-		shim_setInternalError(_T("PassThruShim has not loaded a J2534 DLL")); \
-		dbug_printretval(ERR_FAILED); \
-		return ERR_FAILED; \
-	} \
-}
+#define SHIM_CHECK_DLL()                                                                      \
+	{                                                                                     \
+		if (!shim_checkAndAutoload()) {                                               \
+			shim_setInternalError(_T("PassThruShim has not loaded a J2534 DLL")); \
+			dbug_printretval(ERR_FAILED);                                         \
+			return ERR_FAILED;                                                    \
+		}                                                                             \
+	}
 
-#define SHIM_CHECK_FUNCTION(fcn) \
-{ \
-	if (__FUNCTION__ == NULL) \
-	{ \
-		shim_setInternalError(_T("DLL loaded but does not export %s"), __FUNCTION__); \
-		dbug_printretval(ERR_FAILED); \
-		return ERR_FAILED; \
-	} \
-}
+#define SHIM_CHECK_FUNCTION(fcn)                                                                      \
+	{                                                                                             \
+		if (__FUNCTION__ == NULL) {                                                           \
+			shim_setInternalError(_T("DLL loaded but does not export %s"), __FUNCTION__); \
+			dbug_printretval(ERR_FAILED);                                                 \
+			return ERR_FAILED;                                                            \
+		}                                                                                     \
+	}
 
-extern "C" long J2534_API PassThruLoadLibrary(char * szFunctionLibrary)
+extern "C" long J2534_API
+PassThruLoadLibrary(char *szFunctionLibrary)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
 
 	shim_clearInternalError();
 
-	dtDebug(_T("%.3fs ++ PTLoadLibrary(%s)\n"), GetTimeSinceInit(), (szFunctionLibrary==NULL)?_T("*NULL*"):_T("test")/*szLibrary*/);
+	dtDebug(_T("%.3fs ++ PTLoadLibrary(%s)\n"), GetTimeSinceInit(), (szFunctionLibrary == NULL) ? _T("*NULL*") : _T("test") /*szLibrary*/);
 
-	if (szFunctionLibrary == NULL)
-	{
+	if (szFunctionLibrary == NULL) {
 		// Return an error. Perhaps we want to change NULL to do an autodetect and popup?
 		shim_setInternalError(_T("szFunctionLibrary was zero"));
 		dbug_printretval(ERR_NULL_PARAMETER);
@@ -69,8 +66,7 @@ extern "C" long J2534_API PassThruLoadLibrary(char * szFunctionLibrary)
 	CStringW cstrLibrary(szFunctionLibrary);
 	bool fSuccess;
 	fSuccess = shim_loadLibrary(cstrLibrary);
-	if (! fSuccess)
-	{
+	if (!fSuccess) {
 		shim_setInternalError(_T("Failed to open '%s'"), cstrLibrary);
 		dbug_printretval(ERR_FAILED);
 		return ERR_FAILED;
@@ -80,7 +76,8 @@ extern "C" long J2534_API PassThruLoadLibrary(char * szFunctionLibrary)
 	return STATUS_NOERROR;
 }
 
-extern "C" long J2534_API PassThruUnloadLibrary()
+extern "C" long J2534_API
+PassThruUnloadLibrary()
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -95,7 +92,8 @@ extern "C" long J2534_API PassThruUnloadLibrary()
 	return STATUS_NOERROR;
 }
 
-extern "C" long J2534_API PassThruWriteToLogA(char *szMsg)
+extern "C" long J2534_API
+PassThruWriteToLogA(char *szMsg)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	CStringW cstrMsg(szMsg);
@@ -105,7 +103,8 @@ extern "C" long J2534_API PassThruWriteToLogA(char *szMsg)
 	return STATUS_NOERROR;
 }
 
-extern "C" long J2534_API PassThruWriteToLogW(wchar_t *szMsg)
+extern "C" long J2534_API
+PassThruWriteToLogW(wchar_t *szMsg)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
@@ -114,14 +113,15 @@ extern "C" long J2534_API PassThruWriteToLogW(wchar_t *szMsg)
 	return STATUS_NOERROR;
 }
 
-extern "C" long J2534_API PassThruSaveLog(char *szFilename)
+extern "C" long J2534_API
+PassThruSaveLog(char *szFilename)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
 
 	shim_clearInternalError();
 
-	dtDebug(_T("%.3fs ++ PTSaveLog(%s)\n"), GetTimeSinceInit(), (szFilename==NULL)?_T("*NULL*"):_T("")/*pName*/);
+	dtDebug(_T("%.3fs ++ PTSaveLog(%s)\n"), GetTimeSinceInit(), (szFilename == NULL) ? _T("*NULL*") : _T("") /*pName*/);
 
 	CStringW cstrFilename(szFilename);
 	shim_writeLogfile(cstrFilename, false);
@@ -130,14 +130,15 @@ extern "C" long J2534_API PassThruSaveLog(char *szFilename)
 	return STATUS_NOERROR;
 }
 
-extern "C" long J2534_API PassThruOpen(void *pName, unsigned long *pDeviceID)
+extern "C" long J2534_API
+PassThruOpen(void *pName, unsigned long *pDeviceID)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
 	unsigned long retval;
 
 	shim_clearInternalError();
-	dtDebug(_T("%.3fs ++ PTOpen(%s, 0x%08X)\n"), GetTimeSinceInit(), (pName==NULL)?_T("*NULL*"):_T("")/*pName*/, pDeviceID);
+	dtDebug(_T("%.3fs ++ PTOpen(%s, 0x%08X)\n"), GetTimeSinceInit(), (pName == NULL) ? _T("*NULL*") : _T("") /*pName*/, pDeviceID);
 	SHIM_CHECK_DLL();
 	SHIM_CHECK_FUNCTION(_PassThruOpen);
 
@@ -148,7 +149,8 @@ extern "C" long J2534_API PassThruOpen(void *pName, unsigned long *pDeviceID)
 	return retval;
 }
 
-extern "C" long J2534_API PassThruClose(unsigned long DeviceID)
+extern "C" long J2534_API
+PassThruClose(unsigned long DeviceID)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -165,14 +167,16 @@ extern "C" long J2534_API PassThruClose(unsigned long DeviceID)
 	return retval;
 }
 
-extern "C" long J2534_API PassThruConnect(unsigned long DeviceID, unsigned long ProtocolID, unsigned long Flags, unsigned long Baudrate, unsigned long *pChannelID)
+extern "C" long J2534_API
+PassThruConnect(unsigned long DeviceID, unsigned long ProtocolID, unsigned long Flags, unsigned long Baudrate, unsigned long *pChannelID)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
 	long retval;
 
 	shim_clearInternalError();
-	dtDebug(_T("%.3fs ++ PTConnect(%ld, %s, 0x%08X, %ld, 0x%08X)\n"), GetTimeSinceInit(), DeviceID, dbug_prot(ProtocolID).c_str(), Flags, Baudrate, pChannelID);
+	dtDebug(
+	    _T("%.3fs ++ PTConnect(%ld, %s, 0x%08X, %ld, 0x%08X)\n"), GetTimeSinceInit(), DeviceID, dbug_prot(ProtocolID).c_str(), Flags, Baudrate, pChannelID);
 	SHIM_CHECK_DLL();
 	SHIM_CHECK_FUNCTION(_PassThruConnect);
 
@@ -187,7 +191,8 @@ extern "C" long J2534_API PassThruConnect(unsigned long DeviceID, unsigned long 
 	return retval;
 }
 
-extern "C" long J2534_API PassThruDisconnect(unsigned long ChannelID)
+extern "C" long J2534_API
+PassThruDisconnect(unsigned long ChannelID)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -204,7 +209,8 @@ extern "C" long J2534_API PassThruDisconnect(unsigned long ChannelID)
 	return retval;
 }
 
-extern "C" long J2534_API PassThruReadMsgs(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pNumMsgs, unsigned long Timeout)
+extern "C" long J2534_API
+PassThruReadMsgs(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pNumMsgs, unsigned long Timeout)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -227,7 +233,8 @@ extern "C" long J2534_API PassThruReadMsgs(unsigned long ChannelID, PASSTHRU_MSG
 	return retval;
 }
 
-extern "C" long J2534_API PassThruWriteMsgs(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pNumMsgs, unsigned long Timeout)
+extern "C" long J2534_API
+PassThruWriteMsgs(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pNumMsgs, unsigned long Timeout)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -250,8 +257,8 @@ extern "C" long J2534_API PassThruWriteMsgs(unsigned long ChannelID, PASSTHRU_MS
 	return retval;
 }
 
-extern "C" long J2534_API PassThruStartPeriodicMsg(unsigned long ChannelID, PASSTHRU_MSG *pMsg,
-                      unsigned long *pMsgID, unsigned long TimeInterval)
+extern "C" long J2534_API
+PassThruStartPeriodicMsg(unsigned long ChannelID, PASSTHRU_MSG *pMsg, unsigned long *pMsgID, unsigned long TimeInterval)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -261,7 +268,7 @@ extern "C" long J2534_API PassThruStartPeriodicMsg(unsigned long ChannelID, PASS
 	dtDebug(_T("%.3fs ++ PTStartPeriodicMsg(%ld, 0x%08X, 0x%08X, %ld)\n"), GetTimeSinceInit(), ChannelID, pMsg, pMsgID, TimeInterval);
 	SHIM_CHECK_DLL();
 	SHIM_CHECK_FUNCTION(_PassThruStartPeriodicMsg);
-	
+
 	dbug_printmsg(pMsg, _T("Msg"), 1, true);
 	retval = _PassThruStartPeriodicMsg(ChannelID, pMsg, pMsgID, TimeInterval);
 	if (pMsgID != NULL)
@@ -271,7 +278,8 @@ extern "C" long J2534_API PassThruStartPeriodicMsg(unsigned long ChannelID, PASS
 	return retval;
 }
 
-extern "C" long J2534_API PassThruStopPeriodicMsg(unsigned long ChannelID, unsigned long MsgID)
+extern "C" long J2534_API
+PassThruStopPeriodicMsg(unsigned long ChannelID, unsigned long MsgID)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -288,9 +296,9 @@ extern "C" long J2534_API PassThruStopPeriodicMsg(unsigned long ChannelID, unsig
 	return retval;
 }
 
-extern "C" long J2534_API PassThruStartMsgFilter(unsigned long ChannelID,
-                      unsigned long FilterType, PASSTHRU_MSG *pMaskMsg, PASSTHRU_MSG *pPatternMsg,
-					  PASSTHRU_MSG *pFlowControlMsg, unsigned long *pMsgID)
+extern "C" long J2534_API
+PassThruStartMsgFilter(
+    unsigned long ChannelID, unsigned long FilterType, PASSTHRU_MSG *pMaskMsg, PASSTHRU_MSG *pPatternMsg, PASSTHRU_MSG *pFlowControlMsg, unsigned long *pMsgID)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -298,7 +306,7 @@ extern "C" long J2534_API PassThruStartMsgFilter(unsigned long ChannelID,
 
 	shim_clearInternalError();
 	dtDebug(_T("%.3fs ++ PTStartMsgFilter(%ld, %s, 0x%08X, 0x%08X, 0x%08X, 0x%08X)\n"), GetTimeSinceInit(), ChannelID, dbug_filter(FilterType).c_str(),
-		pMaskMsg, pPatternMsg, pFlowControlMsg, pMsgID);
+	    pMaskMsg, pPatternMsg, pFlowControlMsg, pMsgID);
 	SHIM_CHECK_DLL();
 	SHIM_CHECK_FUNCTION(_PassThruStartMsgFilter);
 
@@ -313,7 +321,8 @@ extern "C" long J2534_API PassThruStartMsgFilter(unsigned long ChannelID,
 	return retval;
 }
 
-extern "C" long J2534_API PassThruStopMsgFilter(unsigned long ChannelID, unsigned long MsgID)
+extern "C" long J2534_API
+PassThruStopMsgFilter(unsigned long ChannelID, unsigned long MsgID)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -330,7 +339,8 @@ extern "C" long J2534_API PassThruStopMsgFilter(unsigned long ChannelID, unsigne
 	return retval;
 }
 
-extern "C" long J2534_API PassThruSetProgrammingVoltage(unsigned long DeviceID, unsigned long Pin, unsigned long Voltage)
+extern "C" long J2534_API
+PassThruSetProgrammingVoltage(unsigned long DeviceID, unsigned long Pin, unsigned long Voltage)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -341,8 +351,7 @@ extern "C" long J2534_API PassThruSetProgrammingVoltage(unsigned long DeviceID, 
 	SHIM_CHECK_DLL();
 	SHIM_CHECK_FUNCTION(_PassThruSetProgrammingVoltage);
 
-	switch (Voltage)
-	{
+	switch (Voltage) {
 	case VOLTAGE_OFF:
 		dtDebug(_T("  Pin %ld remove voltage\n"), Pin);
 		break;
@@ -350,7 +359,7 @@ extern "C" long J2534_API PassThruSetProgrammingVoltage(unsigned long DeviceID, 
 		dtDebug(_T("  Pin %ld short to ground\n"), Pin);
 		break;
 	default:
-		dtDebug(_T("  Pin %ld at %f Volts\n"), Pin, Voltage / (float) 1000);
+		dtDebug(_T("  Pin %ld at %f Volts\n"), Pin, Voltage / (float)1000);
 		break;
 	}
 	retval = _PassThruSetProgrammingVoltage(DeviceID, Pin, Voltage);
@@ -359,7 +368,8 @@ extern "C" long J2534_API PassThruSetProgrammingVoltage(unsigned long DeviceID, 
 	return retval;
 }
 
-extern "C" long J2534_API PassThruReadVersion(unsigned long DeviceID, char *pFirmwareVersion, char *pDllVersion, char *pApiVersion)
+extern "C" long J2534_API
+PassThruReadVersion(unsigned long DeviceID, char *pFirmwareVersion, char *pDllVersion, char *pApiVersion)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -384,20 +394,18 @@ extern "C" long J2534_API PassThruReadVersion(unsigned long DeviceID, char *pFir
 	return retval;
 }
 
-long shim_PassThruGetLastError(char *pErrorDescription)
+long
+shim_PassThruGetLastError(char *pErrorDescription)
 {
-	if (shim_hadInternalError())
-	{
+	if (shim_hadInternalError()) {
 		if (pErrorDescription == NULL)
 			return ERR_NULL_PARAMETER;
 
 		// We'll intercept GetLastError if we're reporting something about the shim
-		CStringA cstrInternalLastError((LPCTSTR) shim_getInternalError());
+		CStringA cstrInternalLastError((LPCTSTR)shim_getInternalError());
 		strncpy_s(pErrorDescription, 80, cstrInternalLastError, _TRUNCATE);
 		return STATUS_NOERROR;
-	}
-	else
-	{
+	} else {
 		// These macros call shim_setInternalError() which does not work the way
 		// this function is documented. They should be replaced with code that
 		// prints an error to the debug log and copies the text to pErrorDescription
@@ -409,7 +417,8 @@ long shim_PassThruGetLastError(char *pErrorDescription)
 	}
 }
 
-extern "C" long J2534_API PassThruGetLastError(char *pErrorDescription)
+extern "C" long J2534_API
+PassThruGetLastError(char *pErrorDescription)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -421,18 +430,16 @@ extern "C" long J2534_API PassThruGetLastError(char *pErrorDescription)
 
 	dtDebug(_T("%.3fs ** PTGetLastError(0x%08X)\n"), GetTimeSinceInit(), pErrorDescription);
 
-	if (pErrorDescription == NULL)
-	{
+	if (pErrorDescription == NULL) {
 		dtDebug(_T("  pErrorDescription is NULL\n"));
 	}
 
 	retval = shim_PassThruGetLastError(pErrorDescription);
 
-	if (pErrorDescription != NULL)
-	{
+	if (pErrorDescription != NULL) {
 #ifdef UNICODE
 		CStringW cstrErrorDescriptionW(pErrorDescription);
-		dtDebug(_T("  %s\n"), (LPCWSTR) cstrErrorDescriptionW);
+		dtDebug(_T("  %s\n"), (LPCWSTR)cstrErrorDescriptionW);
 #else
 		dtDebug(_T("  %s\n"), pErrorDescription);
 #endif
@@ -445,7 +452,8 @@ extern "C" long J2534_API PassThruGetLastError(char *pErrorDescription)
 	return retval;
 }
 
-extern "C" long J2534_API PassThruIoctl(unsigned long ChannelID, unsigned long IoctlID, void *pInput, void *pOutput)
+extern "C" long J2534_API
+PassThruIoctl(unsigned long ChannelID, unsigned long IoctlID, void *pInput, void *pOutput)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	auto_lock lock;
@@ -457,18 +465,17 @@ extern "C" long J2534_API PassThruIoctl(unsigned long ChannelID, unsigned long I
 	SHIM_CHECK_FUNCTION(_PassThruIoctl);
 
 	// Print any relevant info before making the call
-	switch (IoctlID)
-	{
+	switch (IoctlID) {
 	// Do nothing for GET_CONFIG input
 	case SET_CONFIG:
-		dbug_printsconfig((SCONFIG_LIST *) pInput);
+		dbug_printsconfig((SCONFIG_LIST *)pInput);
 		break;
 	// Do nothing for READ_VBATT input
 	case FIVE_BAUD_INIT:
-		dbug_printsbyte((SBYTE_ARRAY *) pInput, _T("Input"));
+		dbug_printsbyte((SBYTE_ARRAY *)pInput, _T("Input"));
 		break;
 	case FAST_INIT:
-		dbug_printmsg((PASSTHRU_MSG *) pInput, _T("Input"), 1, true);
+		dbug_printmsg((PASSTHRU_MSG *)pInput, _T("Input"), 1, true);
 		break;
 	// Do nothing for CLEAR_TX_BUFFER
 	// Do nothing for CLEAR_RX_BUFFER
@@ -476,32 +483,31 @@ extern "C" long J2534_API PassThruIoctl(unsigned long ChannelID, unsigned long I
 	// Do nothing for CLEAR_MSG_FILTERS
 	// Do nothing for CLEAR_FUNCT_MSG_LOOKUP_TABLE
 	case ADD_TO_FUNCT_MSG_LOOKUP_TABLE:
-		dbug_printsbyte((SBYTE_ARRAY *) pInput, _T("Add"));
+		dbug_printsbyte((SBYTE_ARRAY *)pInput, _T("Add"));
 		break;
 	case DELETE_FROM_FUNCT_MSG_LOOKUP_TABLE:
-		dbug_printsbyte((SBYTE_ARRAY *) pInput, _T("Delete"));
+		dbug_printsbyte((SBYTE_ARRAY *)pInput, _T("Delete"));
 		break;
-	// Do nothing for READ_PROG_VOLTAGE
+		// Do nothing for READ_PROG_VOLTAGE
 	}
 
 	retval = _PassThruIoctl(ChannelID, IoctlID, pInput, pOutput);
 
 	// Print any changed info after making the call
-	switch (IoctlID)
-	{
+	switch (IoctlID) {
 	case GET_CONFIG:
-		dbug_printsconfig((SCONFIG_LIST *) pInput);
+		dbug_printsconfig((SCONFIG_LIST *)pInput);
 		break;
 	// Do nothing for SET_CONFIG
 	case READ_VBATT:
 		if (pOutput != NULL)
-			dtDebug(_T("  %f Volts\n"), ((*(unsigned long*)pOutput)) / (float) 1000);
+			dtDebug(_T("  %f Volts\n"), ((*(unsigned long *)pOutput)) / (float)1000);
 		break;
 	case FIVE_BAUD_INIT:
-		dbug_printsbyte((SBYTE_ARRAY *) pInput, _T("Output"));
+		dbug_printsbyte((SBYTE_ARRAY *)pInput, _T("Output"));
 		break;
 	case FAST_INIT:
-		dbug_printmsg((PASSTHRU_MSG *) pOutput, _T("Input"), 1, false);
+		dbug_printmsg((PASSTHRU_MSG *)pOutput, _T("Input"), 1, false);
 		break;
 	// Do nothing for CLEAR_TX_BUFFER
 	// Do nothing for CLEAR_RX_BUFFER
@@ -512,7 +518,7 @@ extern "C" long J2534_API PassThruIoctl(unsigned long ChannelID, unsigned long I
 	// Do nothing for DELETE_FROM_FUNCT_MSG_LOOKUP_TABLE:
 	case READ_PROG_VOLTAGE:
 		if (pOutput != NULL)
-			dtDebug(_T("  %f Volts\n"), ((*(unsigned long*)pOutput)) / (float) 1000);
+			dtDebug(_T("  %f Volts\n"), ((*(unsigned long *)pOutput)) / (float)1000);
 		break;
 	}
 
