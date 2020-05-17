@@ -25,16 +25,20 @@
 /* ProtocolID definitions */
 /**************************/
 
-#define J1850VPW				1
-#define J1850PWM				2
-#define ISO9141					3
-#define ISO14230				4
-#define CAN					5
-#define ISO15765				6
-#define SCI_A_ENGINE				7
-#define SCI_A_TRANS				8
-#define SCI_B_ENGINE				9
-#define SCI_B_TRANS				10
+enum e_protocol_id {
+	// J2534-1
+
+	J1850VPW = 1,
+	J1850PWM = 2,
+	ISO9141 = 3,
+	ISO14230 = 4,
+	CAN = 5,
+	ISO15765 = 6,
+	SCI_A_ENGINE = 7,
+	SCI_A_TRANS = 8,
+	SCI_B_ENGINE = 9,
+	SCI_B_TRANS = 10
+};
 
 // J2534-2 Pin Switched ProtocolIDs
 
