@@ -411,15 +411,21 @@ enum e_tx_flag {
 /* Filter definitions */
 /**********************/
 
-// Allows matching messages into the receive queue. This filter type is only valid on non-ISO 15765 channels
-#define PASS_FILTER				0x00000001
+enum e_filter {
+	// Allows matching messages into the receive queue. This filter type is
+	// only valid on non-ISO 15765 channels
+	PASS_FILTER = 0x00000001,
 
-// Keeps matching messages out of the receive queue. This filter type is only valid on non-ISO 15765 channels
-#define BLOCK_FILTER				0x00000002
+	// Keeps matching messages out of the receive queue. This filter type
+	// is only valid on non-ISO 15765 channels
+	BLOCK_FILTER = 0x00000002,
 
-// Allows matching messages into the receive queue and defines an outgoing flow control message to support
-// the ISO 15765-2 flow control mechanism. This filter type is only valid on ISO 15765 channels.
-#define FLOW_CONTROL_FILTER			0x00000003
+	// Allows matching messages into the receive queue and defines an
+	// outgoing flow control message to support the ISO 15765-2 flow
+	// control mechanism. This filter type is only valid on ISO 15765
+	// channels.
+	FLOW_CONTROL_FILTER = 0x00000003
+};
 
 #pragma pack(push,1)
 typedef struct _PASSTHRU_MSG
