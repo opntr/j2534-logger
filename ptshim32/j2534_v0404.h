@@ -18,8 +18,17 @@
 **
 */
 
+/*
+ * This is the Drew Technologies AVIT2 J2534 header file. The AVIT2 supports
+ * the full J2534-1 v0404 API specification, plus some extensions.
+ *
+ * This file is free to use as long as this header stays intact.
+ */
+
 
 #pragma once
+
+#include <stdint.h>
 
 /**************************/
 /* ProtocolID definitions */
@@ -83,6 +92,7 @@ enum e_protocol_id {
 	ANALOG_IN_31 = 0x8029,
 	ANALOG_IN_32 = 0x802A,
 };
+typedef uint32_t protocol_id_t;
 
 /*************/
 /* IOCTL IDs */
@@ -109,7 +119,8 @@ enum e_ioctl_id {
 	SW_CAN_NS = 0x8001,
 	SET_POLL_RESPONSE = 0x8002,
 	BECOME_MASTER = 0x8003
-}
+};
+typedef uint32_t ioctl_id_t;
 
 /*******************************/
 /* Configuration Parameter IDs */
@@ -169,6 +180,7 @@ enum e_ioctl_config {
 	INPUT_RANGE_LOW = 0x8026,	// Lower limit in millivolts of A/D input. Read Only.
 	INPUT_RANGE_HIGH = 0x8027	// Upper limit in millivolts of A/D input. Read Only.
 };
+typedef uint32_t ioctl_device_info_t;
 
 /*************/
 /* Error IDs */
@@ -274,6 +286,7 @@ enum e_retval {
 
 	ERR_NULLPARAMETER = ERR_NULL_PARAMETER	/*v2*/
 };
+typedef long retval_t;
 
 
 /*****************************/
@@ -287,6 +300,7 @@ enum e_parity {
 	ODD_PARITY = 1,
 	EVEN_PARITY = 2
 };
+typedef uint32_t parity_t;
 
 // SWCAN - J2534-2
 enum e_swcan {
@@ -297,12 +311,13 @@ enum e_swcan {
 	AUTO_RESISTOR = 2
 };
 
-// Mixed Mode - J2534-2
+// Mixed Mode
 enum e_can_mixed_format {
 	CAN_MIXED_FORMAT_OFF = 0,
 	CAN_MIXED_FORMAT_ON = 1,
 	CAN_MIXED_FORMAT_ALL_FRAMES = 2
 };
+typedef uint32_t can_mixed_format_t;
 
 
 /*******************************/
@@ -333,6 +348,7 @@ enum e_connect_flag {
 	// 1 = use K-line only line for initialization address
 	ISO9141_K_LINE_ONLY = 0x00001000
 };
+typedef uint32_t connect_flag_t;
 
 /************************/
 /* RxStatus definitions */
@@ -375,6 +391,7 @@ enum e_rx_status {
 	SW_CAN_HS_RX = 0x00020000,		/*-2*/
 	SW_CAN_HV_RX = 0x00010000		/*-2*/
 };
+typedef uint32_t rx_status_t;
 
 /***********************/
 /* TxFlags definitions */
@@ -406,6 +423,7 @@ enum e_tx_flag {
 
 	DT_PERIODIC_UPDATE = 0x10000000		/*DT*/
 };
+typedef uint32_t tx_flag_t;
 
 /**********************/
 /* Filter definitions */
@@ -426,6 +444,7 @@ enum e_filter {
 	// channels.
 	FLOW_CONTROL_FILTER = 0x00000003
 };
+typedef uint32_t filter_t;
 
 #pragma pack(push,1)
 typedef struct _PASSTHRU_MSG
