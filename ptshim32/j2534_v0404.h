@@ -282,21 +282,27 @@ enum e_retval {
 #define SHORT_TO_GROUND				0xFFFFFFFE
 #define VOLTAGE_OFF				0xFFFFFFFF
 
-#define NO_PARITY				0
-#define ODD_PARITY				1
-#define EVEN_PARITY				2
+enum e_parity {
+	NO_PARITY = 0,
+	ODD_PARITY = 1,
+	EVEN_PARITY = 2
+};
 
-//SWCAN
-#define DISBLE_SPDCHANGE			0	/*-2*/
-#define ENABLE_SPDCHANGE			1	/*-2*/
-#define DISCONNECT_RESISTOR			0	/*-2*/
-#define CONNECT_RESISTOR			1	/*-2*/
-#define AUTO_RESISTOR				2	/*-2*/
+// SWCAN - J2534-2
+enum e_swcan {
+	DISBLE_SPDCHANGE = 0,
+	ENABLE_SPDCHANGE = 1,
+	DISCONNECT_RESISTOR = 0,
+	CONNECT_RESISTOR = 1,
+	AUTO_RESISTOR = 2
+};
 
-//Mixed Mode
-#define CAN_MIXED_FORMAT_OFF			0	/*-2*/
-#define CAN_MIXED_FORMAT_ON			1	/*-2*/
-#define CAN_MIXED_FORMAT_ALL_FRAMES		2	/*-2*/
+// Mixed Mode - J2534-2
+enum e_can_mixed_format {
+	CAN_MIXED_FORMAT_OFF = 0,
+	CAN_MIXED_FORMAT_ON = 1,
+	CAN_MIXED_FORMAT_ALL_FRAMES = 2
+};
 
 
 /*******************************/
