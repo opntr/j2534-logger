@@ -338,68 +338,74 @@ enum e_connect_flag {
 /* RxStatus definitions */
 /************************/
 
-// 0 = received i.e. this message was transmitted on the bus by another node
-// 1 = transmitted i.e. this is the echo of the message transmitted by the PassThru device
-#define TX_MSG_TYPE				0x00000001
+enum e_rx_status {
+	// 0 = received i.e. this message was transmitted on the bus by another
+	//  node
+	// 1 = transmitted i.e. this is the echo of the message transmitted by
+	//  the PassThru device
+	TX_MSG_TYPE = 0x00000001,
 
-// 0 = Not a start of message indication
-// 1 = First byte or frame received
-#define START_OF_MESSAGE			0x00000002
-#define ISO15765_FIRST_FRAME			0x00000002	/*v2 compat from v0202*/
+	// 0 = Not a start of message indication
+	// 1 = First byte or frame received
+	START_OF_MESSAGE = 0x00000002,
+	ISO15765_FIRST_FRAME = 0x00000002,	/*v2 compat from v0202*/
 
-#define ISO15765_EXT_ADDR			0x00000080	/*DT Accidentally refered to in spec*/
+	ISO15765_EXT_ADDR = 0x00000080,		/*DT Accidentally refered to in spec*/
 
-// 0 = No break received
-// 1 = Break received
-#define RX_BREAK				0x00000004
+	// 0 = No break received
+	// 1 = Break received
+	RX_BREAK = 0x00000004,
 
-// 0 = No TxDone
-// 1 = TxDone
-#define TX_INDICATION				0x00000008	// Preferred name
-#define TX_DONE					0x00000008
+	// 0 = No TxDone
+	// 1 = TxDone
+	TX_INDICATION = 0x00000008,		// Preferred name
+	TX_DONE = 0x00000008,
 
-// 0 = No Error
-// 1 = Padding Error
-#define ISO15765_PADDING_ERROR			0x00000010
+	// 0 = No Error
+	// 1 = Padding Error
+	ISO15765_PADDING_ERROR = 0x00000010,
 
-// 0 = no extended address,
-// 1 = extended address is first byte after the CAN ID
-#define ISO15765_ADDR_TYPE			0x00000080
+	// 0 = no extended address,
+	// 1 = extended address is first byte after the CAN ID
+	ISO15765_ADDR_TYPE = 0x00000080,
 
-//CAN_29BIT_ID							0x00000100  defined above
+	// CAN_29BIT_ID = 0x00000100,		// defined above
 
-#define	SW_CAN_NS_RX				0x00040000	/*-2*/
-#define	SW_CAN_HS_RX				0x00020000	/*-2*/
-#define	SW_CAN_HV_RX				0x00010000	/*-2*/
+	SW_CAN_NS_RX = 0x00040000,		/*-2*/
+	SW_CAN_HS_RX = 0x00020000,		/*-2*/
+	SW_CAN_HV_RX = 0x00010000		/*-2*/
+};
 
 /***********************/
 /* TxFlags definitions */
 /***********************/
 
-// 0 = no padding
-// 1 = pad all flow controlled messages to a full CAN frame using zeroes
-#define ISO15765_FRAME_PAD			0x00000040
+enum e_tx_flag {
+	// 0 = no padding
+	// 1 = pad all flow controlled messages to a full CAN frame using zeroes
+	ISO15765_FRAME_PAD = 0x00000040,
 
-//ISO15765_ADDR_TYPE				0x00000080  defined above
-//CAN_29BIT_ID					0x00000100  defined above
+	// ISO15765_ADDR_TYPE = 0x00000080,	// defined above
+	// CAN_29BIT_ID = 0x00000100,		// defined above
 
-// 0 = Interface message timing as specified in ISO 14230
-// 1 = After a response is received for a physical request, the wait time shall be reduced to P3_MIN
-// Does not affect timing on responses to functional requests
-#define WAIT_P3_MIN_ONLY			0x00000200
+	// 0 = Interface message timing as specified in ISO 14230
+	// 1 = After a response is received for a physical request, the wait
+	//  time shall be reduced to P3_MIN
+	// Does not affect timing on responses to functional requests
+	WAIT_P3_MIN_ONLY = 0x00000200,
 
-#define SW_CAN_HV_TX				0x00000400	/*-2*/
+	SW_CAN_HV_TX = 0x00000400,		/*-2*/
 
-// 0 = Transmit using SCI Full duplex mode
-// 1 = Transmit using SCI Half duplex mode
-#define SCI_MODE				0x00400000
+	// 0 = Transmit using SCI Full duplex mode
+	// 1 = Transmit using SCI Half duplex mode
+	SCI_MODE = 0x00400000,
 
-// 0 = no voltage after message transmit
-// 1 = apply 20V after message transmit
-#define SCI_TX_VOLTAGE				0x00800000
+	// 0 = no voltage after message transmit
+	// 1 = apply 20V after message transmit
+	SCI_TX_VOLTAGE = 0x00800000,
 
-#define DT_PERIODIC_UPDATE			0x10000000	/*DT*/
-
+	DT_PERIODIC_UPDATE = 0x10000000		/*DT*/
+};
 
 /**********************/
 /* Filter definitions */
