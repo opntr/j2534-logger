@@ -27,7 +27,6 @@
 
 enum e_protocol_id {
 	// J2534-1
-
 	J1850VPW = 1,
 	J1850PWM = 2,
 	ISO9141 = 3,
@@ -38,53 +37,52 @@ enum e_protocol_id {
 	SCI_A_TRANS = 8,
 	SCI_B_ENGINE = 9,
 	SCI_B_TRANS = 10
+
+	// J2534-2 Pin Switched ProtocolIDs
+	J1850VPW_PS = 0x8000,
+	J1850PWM_PS = 0x8001,
+	ISO9141_PS = 0x8002,
+	ISO14230_PS = 0x8003,
+	CAN_PS = 0x8004,
+	ISO15765_PS = 0x8005,
+	J2610_PS = 0x8006,
+	SW_ISO15765_PS = 0x8007,
+	SW_CAN_PS = 0x8008,
+	GM_UART_PS = 0x8009,
+	CAN_XON_XOFF_PS = 0x800A,
+	ANALOG_IN_1 = 0x800B,
+	ANALOG_IN_2 = 0x800C,
+	ANALOG_IN_3 = 0x800D,
+	ANALOG_IN_4 = 0x800E,
+	ANALOG_IN_5 = 0x800F,
+	ANALOG_IN_6 = 0x8010,
+	ANALOG_IN_7 = 0x8011,
+	ANALOG_IN_8 = 0x8012,
+	ANALOG_IN_9 = 0x8013,
+	ANALOG_IN_10 = 0x8014,
+	ANALOG_IN_11 = 0x8015,
+	ANALOG_IN_12 = 0x8016,
+	ANALOG_IN_13 = 0x8017,
+	ANALOG_IN_14 = 0x8018,
+	ANALOG_IN_15 = 0x8019,
+	ANALOG_IN_16 = 0x801A,
+	ANALOG_IN_17 = 0x801B,
+	ANALOG_IN_18 = 0x801C,
+	ANALOG_IN_19 = 0x801D,
+	ANALOG_IN_20 = 0x801E,
+	ANALOG_IN_21 = 0x801F,
+	ANALOG_IN_22 = 0x8020,
+	ANALOG_IN_23 = 0x8021,
+	ANALOG_IN_24 = 0x8022,
+	ANALOG_IN_25 = 0x8023,
+	ANALOG_IN_26 = 0x8024,
+	ANALOG_IN_27 = 0x8025,
+	ANALOG_IN_28 = 0x8026,
+	ANALOG_IN_29 = 0x8027,
+	ANALOG_IN_30 = 0x8028,
+	ANALOG_IN_31 = 0x8029,
+	ANALOG_IN_32 = 0x802A,
 };
-
-// J2534-2 Pin Switched ProtocolIDs
-
-#define J1850VPW_PS				0x8000
-#define J1850PWM_PS				0x8001
-#define ISO9141_PS				0x8002
-#define ISO14230_PS				0x8003
-#define CAN_PS					0x8004
-#define ISO15765_PS				0x8005
-#define J2610_PS				0x8006
-#define SW_ISO15765_PS				0x8007
-#define SW_CAN_PS				0x8008
-#define GM_UART_PS				0x8009
-#define CAN_XON_XOFF_PS				0x800A
-#define ANALOG_IN_1				0x800B
-#define ANALOG_IN_2				0x800C
-#define ANALOG_IN_3				0x800D
-#define ANALOG_IN_4				0x800E
-#define ANALOG_IN_5				0x800F
-#define ANALOG_IN_6				0x8010
-#define ANALOG_IN_7				0x8011
-#define ANALOG_IN_8				0x8012
-#define ANALOG_IN_9				0x8013
-#define ANALOG_IN_10				0x8014
-#define ANALOG_IN_11				0x8015
-#define ANALOG_IN_12				0x8016
-#define ANALOG_IN_13				0x8017
-#define ANALOG_IN_14				0x8018
-#define ANALOG_IN_15				0x8019
-#define ANALOG_IN_16				0x801A
-#define ANALOG_IN_17				0x801B
-#define ANALOG_IN_18				0x801C
-#define ANALOG_IN_19				0x801D
-#define ANALOG_IN_20				0x801E
-#define ANALOG_IN_21				0x801F
-#define ANALOG_IN_22				0x8020
-#define ANALOG_IN_23				0x8021
-#define ANALOG_IN_24				0x8022
-#define ANALOG_IN_25				0x8023
-#define ANALOG_IN_26				0x8024
-#define ANALOG_IN_27				0x8025
-#define ANALOG_IN_28				0x8026
-#define ANALOG_IN_29				0x8027
-#define ANALOG_IN_30				0x8028
-#define ANALOG_IN_31				0x8029
-#define ANALOG_IN_32				0x802A
 
 /*************/
 /* IOCTL IDs */
