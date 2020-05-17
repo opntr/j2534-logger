@@ -88,84 +88,87 @@ enum e_protocol_id {
 /* IOCTL IDs */
 /*************/
 
-#define GET_CONFIG				0x01
-#define SET_CONFIG				0x02
-#define READ_VBATT				0x03
-#define FIVE_BAUD_INIT				0x04
-#define FAST_INIT				0x05
-// unused					0x06
-#define CLEAR_TX_BUFFER				0x07
-#define CLEAR_RX_BUFFER				0x08
-#define CLEAR_PERIODIC_MSGS			0x09
-#define CLEAR_MSG_FILTERS			0x0A
-#define CLEAR_FUNCT_MSG_LOOKUP_TABLE		0x0B
-#define ADD_TO_FUNCT_MSG_LOOKUP_TABLE		0x0C
-#define DELETE_FROM_FUNCT_MSG_LOOKUP_TABLE	0x0D
-#define READ_PROG_VOLTAGE			0x0E
-// J2534-2 SW_CAN
-#define SW_CAN_HS				0x8000		/*-2*/
-#define SW_CAN_NS				0x8001		/*-2*/
-#define SET_POLL_RESPONSE			0x8002		/*-2*/
-#define BECOME_MASTER				0x8003		/*-2*/
+enum e_ioctl_id {
+	GET_CONFIG = 0x01,
+	SET_CONFIG = 0x02,
+	READ_VBATT = 0x03,
+	FIVE_BAUD_INIT = 0x04,
+	FAST_INIT = 0x05,
+	// IOCTL_ID_UNUSED_06 = 0x06,
+	CLEAR_TX_BUFFER = 0x07,
+	CLEAR_RX_BUFFER = 0x08,
+	CLEAR_PERIODIC_MSGS = 0x09,
+	CLEAR_MSG_FILTERS = 0x0A,
+	CLEAR_FUNCT_MSG_LOOKUP_TABLE = 0x0B,
+	ADD_TO_FUNCT_MSG_LOOKUP_TABLE = 0x0C,
+	DELETE_FROM_FUNCT_MSG_LOOKUP_TABLE = 0x0D,
+	READ_PROG_VOLTAGE = 0x0E,
+
+	// J2534-2 SW_CAN
+	SW_CAN_HS = 0x8000,
+	SW_CAN_NS = 0x8001,
+	SET_POLL_RESPONSE = 0x8002,
+	BECOME_MASTER = 0x8003
+}
 
 /*******************************/
 /* Configuration Parameter IDs */
 /*******************************/
 
-#define DATA_RATE				0x01
-// unused					0x02
-#define LOOPBACK				0x03
-#define NODE_ADDRESS				0x04
-#define NETWORK_LINE				0x05
-#define P1_MIN					0x06	// Don't use
-#define P1_MAX					0x07
-#define P2_MIN					0x08	// Don't use
-#define P2_MAX					0x09	// Don't use
-#define P3_MIN					0x0A
-#define P3_MAX					0x0B	// Don't use
-#define P4_MIN					0x0C
-#define P4_MAX					0x0D	// Don't use
-// See W0					0x19
-#define W1					0x0E
-#define W2					0x0F
-#define W3					0x10
-#define W4					0x11
-#define W5					0x12
-#define TIDLE					0x13
-#define TINIL					0x14
-#define TWUP					0x15
-#define PARITY					0x16
-#define BIT_SAMPLE_POINT			0x17
-#define SYNC_JUMP_WIDTH				0x18
-#define W0					0x19
-#define T1_MAX					0x1A
-#define T2_MAX					0x1B
-// See T3_MAX					0x24
-#define T4_MAX					0x1C
-#define T5_MAX					0x1D
-#define ISO15765_BS				0x1E
-#define ISO15765_STMIN				0x1F
-#define DATA_BITS				0x20
-#define FIVE_BAUD_MOD				0x21
-#define BS_TX					0x22
-#define STMIN_TX				0x23
-#define T3_MAX					0x24
-#define ISO15765_WFT_MAX			0x25
+enum e_ioctl_config {
+	DATA_RATE = 0x01,
+	// IOCTL_CONFIG_UNUSED_02 = 0x02,
+	LOOPBACK = 0x03,
+	NODE_ADDRESS = 0x04,
+	NETWORK_LINE = 0x05,
+	P1_MIN = 0x06,	// Don't use
+	P1_MAX = 0x07,
+	P2_MIN = 0x08,	// Don't use
+	P2_MAX = 0x09,	// Don't use
+	P3_MIN = 0x0A,
+	P3_MAX = 0x0B,	// Don't use
+	P4_MIN = 0x0C,
+	P4_MAX = 0x0D,	// Don't use
+	W1 = 0x0E,
+	W2 = 0x0F,
+	W3 = 0x10,
+	W4 = 0x11,
+	W5 = 0x12,
+	TIDLE = 0x13,
+	TINIL = 0x14,
+	TWUP = 0x15,
+	PARITY = 0x16,
+	BIT_SAMPLE_POINT = 0x17,
+	SYNC_JUMP_WIDTH = 0x18,
+	W0 = 0x19,
+	T1_MAX = 0x1A,
+	T2_MAX = 0x1B,
+	T4_MAX = 0x1C,
+	T5_MAX = 0x1D,
+	ISO15765_BS = 0x1E,
+	ISO15765_STMIN = 0x1F,
+	DATA_BITS = 0x20,
+	FIVE_BAUD_MOD = 0x21,
+	BS_TX = 0x22,
+	STMIN_TX = 0x23,
+	T3_MAX = 0x24,
+	ISO15765_WFT_MAX = 0x25,
 
-// J2534-2
-#define CAN_MIXED_FORMAT			0x8000	/*-2*/
-#define J1962_PINS				0x8001	/*-2*/
-#define SW_CAN_HS_DATA_RATE			0x8010	/*-2*/
-#define SW_CAN_SPEEDCHANGE_ENABLE		0x8011	/*-2*/
-#define SW_CAN_RES_SWITCH			0x8012	/*-2*/
-#define ACTIVE_CHANNELS				0x8020	// Bitmask of channels being sampled
-#define SAMPLE_RATE				0x8021	// Samples/second or Seconds/sample
-#define SAMPLES_PER_READING			0x8022	// Samples to average into a single reading
-#define READINGS_PER_MSG			0x8023	// Number of readings for each active channel per PASSTHRU_MSG structure
-#define AVERAGING_METHOD			0x8024	// The way in which the samples will be averaged.
-#define SAMPLE_RESOLUTION			0x8025	// The number of bits of resolution for each channel in the subsystem. Read Only.
-#define INPUT_RANGE_LOW				0x8026	// Lower limit in millivolts of A/D input. Read Only.
-#define INPUT_RANGE_HIGH			0x8027	// Upper limit in millivolts of A/D input. Read Only.
+	// J2534-2
+	CAN_MIXED_FORMAT = 0x8000,
+	J1962_PINS = 0x8001,
+	SW_CAN_HS_DATA_RATE = 0x8010,
+	SW_CAN_SPEEDCHANGE_ENABLE = 0x8011,
+	SW_CAN_RES_SWITCH = 0x8012,
+	ACTIVE_CHANNELS = 0x8020,	// Bitmask of channels being sampled
+	SAMPLE_RATE = 0x8021,		// Samples/second or Seconds/sample
+	SAMPLES_PER_READING = 0x8022,	// Samples to average into a single reading
+	READINGS_PER_MSG = 0x8023,	// Number of readings for each active channel per PASSTHRU_MSG structure
+	AVERAGING_METHOD = 0x8024,	// The way in which the samples will be averaged.
+	SAMPLE_RESOLUTION = 0x8025,	// The number of bits of resolution for each channel in the subsystem. Read Only.
+	INPUT_RANGE_LOW = 0x8026,	// Lower limit in millivolts of A/D input. Read Only.
+	INPUT_RANGE_HIGH = 0x8027,	// Upper limit in millivolts of A/D input. Read Only.
+};
 
 /*************/
 /* Error IDs */
