@@ -45,7 +45,7 @@ enum e_protocol_id {
 	SCI_A_ENGINE = 7,
 	SCI_A_TRANS = 8,
 	SCI_B_ENGINE = 9,
-	SCI_B_TRANS = 10
+	SCI_B_TRANS = 10,
 
 	// J2534-2 Pin Switched ProtocolIDs
 	J1850VPW_PS = 0x8000,
