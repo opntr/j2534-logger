@@ -68,6 +68,26 @@ enum e_protocol_id {
 	TP2_0_PS = 0x800E,			// 6H,14L CAN
 	FT_CAN_PS = 0x800F,
 	FT_ISO15765_PS = 0x8010,
+	KW1281_PS = 0x8011,
+	KW1281_TP1_6_PS = 0x8012,
+	ISO5_PS = 0x8013,			// Switched K Line
+	ISO8_PS = 0x8014,			// Switched K Line
+	DS2_PS = 0x8015,			// Switched K Line
+	DAIHATSU_PS = 0x8016,			// 7K Line
+	ISOFORD_PS = 0x8017,			// Switched K Line
+	KW81_PS = 0x8018,			// 7K Line
+	KW82_PS = 0x8019,			// 7K Line
+	MB_PS = 0x801A,				// Switched K Line
+	MBHFM_PS = 0x801B,			// 7K Line
+	NISSAN_PS = 0x801C,			// 12K 13L Line
+	MITSUBISHI_PS = 0x801D,			// 7K Line
+	PEUGEOT_PS = 0x801E,			// Switched K Line
+	TOYOTA_PS = 0x801F,			// 7K Line
+	KIA_PS = 0x8020,			// Switched K Line
+	WABKO_PS = 0x8021,			// Switched K Line
+	J4_PS = 0x8022,				// 7K Line
+	ALDL160_PS = 0x8023,			// Switched K Line
+	CUMMINS = 0x8024,			// 6H, 14L CAN
 
 	CAN_CH1 = 0x9000,
 	CAN_CH2 = CAN_CH1 + 1,
